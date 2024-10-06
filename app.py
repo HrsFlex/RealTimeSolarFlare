@@ -1,8 +1,15 @@
 import streamlit as st
 import requests
+import os
+import base64
 from datetime import datetime, timedelta, timezone
 import pandas as pd
 import plotly.express as px
+
+
+
+
+
 
 def get_solar_flare_data(start_date, end_date):
     # Format dates for API call
@@ -160,9 +167,30 @@ def main():
         st.error("Error: End date must be after start date.")
 
     # Footer
-    # st.markdown("---")
-    # st.markdown(" | Data source: NASA DONKI")
+    st.markdown("---")
+    st.markdown(" | Data source: NASA DONKI API - Real-time data from the Space Weather Database Of Notifications, Knowledge, Information (DONKI) by Auth. NASA data Sources - HRS")
+
+# def get_base64(bin_file):
+#     with open(bin_file, 'rb') as f:
+#         data = f.read()
+#     return base64.b64encode(data).decode()
+
+# def set_background(png_file):
+#     bin_str = get_base64(png_file)
+#     page_bg_img = '''
+#     <style>
+#     .stApp {
+#     background-image: url("data:image/png;base64,%s");
+#     background-size: cover;
+#     background-repeat: no-repeat;
+#     background-position: center center;
+#     }
+#     </style>
+#     ''' % bin_str
+#     st.markdown(page_bg_img, unsafe_allow_html=True)
+
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# set_background(f"{BASE_DIR}/img/bg.jpeg")
 
 if __name__ == "__main__":
     main()
-    
